@@ -1,0 +1,8 @@
+.h1 {
+    text-align: center;
+}
+
+.image {
+    display: flex;
+    justify-content: center;
+}
