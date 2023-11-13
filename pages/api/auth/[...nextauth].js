@@ -1,7 +1,13 @@
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { createHash } from 'crypto';
+
+const generateSecret = () => {
+  return createHash('sha256').update(Math.random().toString()).digest('hex');
+};
 
 export default NextAuth({
+  secret: generateSecret(),
   session: {
     strategy: 'jwt',
   },
