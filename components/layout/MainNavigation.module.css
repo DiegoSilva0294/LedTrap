@@ -19,8 +19,13 @@
 }
 
 @media screen and (max-width: 600px) {
+  .header ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
   .header li {
-    margin-bottom: 5px; /* Ajusta el margen para pantallas más pequeñas */
+    margin: 5px 0;
   }
 }
 
