@@ -6,3 +6,9 @@
     font-size: 20px;
     border: 2px solid black;
 }
+
+@media screen and (max-width: 600px) {
+    .graf {
+        width: 100%;
+    }
+}
