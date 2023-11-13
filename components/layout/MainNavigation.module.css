@@ -21,6 +21,7 @@
 @media screen and (max-width: 600px) {
   .header {
     font-size: x-small;
+    height: 15rem;
   }
   .header ul {
     flex-direction: column;
