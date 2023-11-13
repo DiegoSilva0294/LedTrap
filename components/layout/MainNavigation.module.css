@@ -18,6 +18,12 @@
     margin: 0 40px;
 }
 
+@media screen and (max-width: 600px) {
+  .header li {
+    margin-bottom: 5px; /* Ajusta el margen para pantallas más pequeñas */
+  }
+}
+
 .header a {
     color: rgb(255, 255, 255);
     font-size: 26px;
@@ -31,7 +37,7 @@
 
 .button {
     cursor: pointer;
-    font-size: 25px;
+    font-size: 5%;
     color: rgb(255, 255, 255);
     background-color: rgb(173, 0, 0);
     border: 0px;
