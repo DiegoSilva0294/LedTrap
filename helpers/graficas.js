@@ -6,37 +6,37 @@ function AcomodarData(dataCruda) {
   for (let dato of dataCruda.capturas) {
     switch (dato.hora) {
       case "20:00":
-        cantidadXhora[0]++;
+        cantidadXhora[0] = dato.capturas;
         break;
       case "21:00":
-        cantidadXhora[1]++;
+        cantidadXhora[1] = dato.capturas;
         break;
       case "22:00":
-        cantidadXhora[2]++;
+        cantidadXhora[2] = dato.capturas;
         break;
       case "23:00":
-        cantidadXhora[3]++;
+        cantidadXhora[3] = dato.capturas;
         break;
       case "00:00":
-        cantidadXhora[4]++;
+        cantidadXhora[4] = dato.capturas;
         break;
       case "01:00":
-        cantidadXhora[5]++;
+        cantidadXhora[5] = dato.capturas;
         break;
       case "02:00":
-        cantidadXhora[6]++;
+        cantidadXhora[6] = dato.capturas;
         break;
       case "03:00":
-        cantidadXhora[7]++;
+        cantidadXhora[7] = dato.capturas;
         break;
       case "04:00":
-        cantidadXhora[8]++;
+        cantidadXhora[8] = dato.capturas;
         break;
       case "05:00":
-        cantidadXhora[9]++;
+        cantidadXhora[9] = dato.capturas;
         break;
       case "06:00":
-        cantidadXhora[10]++;
+        cantidadXhora[10] = dato.capturas;
         break;
     }
   }
