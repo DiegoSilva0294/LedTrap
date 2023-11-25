@@ -1,0 +1,17 @@
+.batteryIcon {
+    display: flex;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+    color: #333; /* Color del texto */
+    justify-content: center;
+
+  }
+  
+.batteryIcono {
+    font-size: 4rem; /* Tamaño del ícono */
+    margin-right: 8px; /* Espaciado entre el ícono y el texto */
+  }
+  
+.batteryLetter {
+    font-size: 3.5rem; /* Tamaño del texto del porcentaje */
+  }
