@@ -24,10 +24,19 @@ async function handler(req, res) {
       .limit(1)
       .toArray(); // Obtener solo un documento (el último)
 
+      const dataEstado = await db
+      .collection("trampa1/estado")
+      .find()
+      .sort({ _id: -1 }) // Ordenar por el campo "_id" de forma descendente
+      .limit(1)
+      .toArray(); // Obtener solo un documento (el último)
+
+    const data = dataBateria.concat(dataEstado)
+
     client.close();
     res.status(200).json({
       message: "Nos conectamos y conseguimos la data",
-      dataBateria: dataBateria,
+      data: data,
     });
   }
 }
