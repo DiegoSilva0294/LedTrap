@@ -79,9 +79,9 @@ function BatteryPage() {
 
     // Utilizar la función de setState que acepta un callback para asegurarse de tener los valores más recientes
     setFechaActual(
-      (prevFechaActual) => prevFechaActual || `${dia}/${mes}/${anio}`
+      (prevFechaActual) =>  `${dia}/${mes}/${anio}` || prevFechaActual 
     );
-    setHoraActual((prevHoraActual) => prevHoraActual || `${horas}:${minutos}`);
+    setHoraActual((prevHoraActual) => `${horas}:${minutos}` || prevHoraActual );
 
     // Utilizar los valores más recientes para almacenar en el almacenamiento local
     localStorage.setItem("porcentajeBateria", res.data[0].nivel);
