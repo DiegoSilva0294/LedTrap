@@ -1,5 +1,5 @@
 import BatteryIcon from "./BatteryIcon";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import classes from "./BatteryPage.module.css";
 
 function BatteryPage() {
@@ -13,6 +13,28 @@ function BatteryPage() {
 
   const [fechaActual, setFechaActual] = useState("25/11/2023");
   const [horaActual, setHoraActual] = useState("18:16");
+
+  useEffect(() => {
+    // Recuperar los valores almacenados en el almacenamiento local al cargar el componente
+    const storedPercentage = localStorage.getItem("porcentajeBateria");
+    const storedFechaBateria = localStorage.getItem("fechaBateria");
+    const storedHoraBateria = localStorage.getItem("horaBateria");
+    const storedEstado = localStorage.getItem("estado");
+    const storedFechaEstado = localStorage.getItem("fechaEstado");
+    const storedHoraEstado = localStorage.getItem("horaEstado");
+    const storedFechaActual = localStorage.getItem("fechaActual");
+    const storedHoraActual = localStorage.getItem("horaActual");
+
+    // Establecer los estados con los valores recuperados o los iniciales si no hay datos almacenados
+    setPorcentajeBateria(storedPercentage || porcentajeBateria);
+    setFechaBateria(storedFechaBateria || fechaBateria);
+    setHoraBateria(storedHoraBateria || horaBateria);
+    setEstado(storedEstado || estado);
+    setFechaEstado(storedFechaEstado || fechaEstado);
+    setHoraEstado(storedHoraEstado || horaEstado);
+    setFechaActual(storedFechaActual || fechaActual);
+    setHoraActual(storedHoraActual || horaActual);
+  }, []); // El segundo argumento [] asegura que este efecto solo se ejecute una vez al montar el componente
 
   async function actualizarHandler(event) {
     event.preventDefault();
@@ -40,7 +62,7 @@ function BatteryPage() {
 
     console.log(res.data[1]);
     console.log(res.data[1].estado);
-    console.log(estado)
+    console.log(estado);
 
     setEstado(res.data[1].estado);
     setFechaEstado(res.data[1].fecha);
@@ -55,9 +77,21 @@ function BatteryPage() {
     const mes = await (fechaNueva.getMonth() + 1).toString().padStart(2, "0"); // Nota: Los meses comienzan desde 0
     const anio = await fechaNueva.getFullYear();
 
-    setFechaActual(`${dia}/${mes}/${anio}`);
+    // Utilizar la función de setState que acepta un callback para asegurarse de tener los valores más recientes
+    setFechaActual(
+      (prevFechaActual) => prevFechaActual || `${dia}/${mes}/${anio}`
+    );
+    setHoraActual((prevHoraActual) => prevHoraActual || `${horas}:${minutos}`);
 
-    setHoraActual(`${horas}:${minutos}`);
+    // Utilizar los valores más recientes para almacenar en el almacenamiento local
+    localStorage.setItem("porcentajeBateria", res.data[0].nivel);
+    localStorage.setItem("fechaBateria", res.data[0].fecha);
+    localStorage.setItem("horaBateria", res.data[0].hora);
+    localStorage.setItem("estado", res.data[1].estado);
+    localStorage.setItem("fechaEstado", res.data[1].fecha);
+    localStorage.setItem("horaEstado", res.data[1].hora);
+    localStorage.setItem("fechaActual", `${dia}/${mes}/${anio}`);
+    localStorage.setItem("horaActual", `${horas}:${minutos}`);
   }
   return (
     <div>
