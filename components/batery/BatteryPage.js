@@ -38,7 +38,7 @@ function BatteryPage() {
 
   async function actualizarHandler(event) {
     event.preventDefault();
-
+try{
     const response = await fetch("/api/bateria", {
       method: "GET",
       headers: {
@@ -59,16 +59,11 @@ function BatteryPage() {
     setPorcentajeBateria(res.data[0].nivel);
     setFechaBateria(res.data[0].fecha);
     setHoraBateria(res.data[0].hora);
-
-    console.log(res.data[1]);
-    console.log(res.data[1].estado);
-    console.log(estado);
-
     setEstado(res.data[1].estado);
     setFechaEstado(res.data[1].fecha);
     setHoraEstado(res.data[1].hora);
 
-    let fechaNueva = await new Date();
+    let fechaNueva = new Date();
 
     const horas = await fechaNueva.getHours().toString().padStart(2, "0");
     const minutos = await fechaNueva.getMinutes().toString().padStart(2, "0");
@@ -79,9 +74,9 @@ function BatteryPage() {
 
     // Utilizar la función de setState que acepta un callback para asegurarse de tener los valores más recientes
     setFechaActual(
-      (prevFechaActual) =>  `${dia}/${mes}/${anio}` || prevFechaActual 
+      (prevFechaActual) => `${dia}/${mes}/${anio}` || prevFechaActual
     );
-    setHoraActual((prevHoraActual) => `${horas}:${minutos}` || prevHoraActual );
+    setHoraActual((prevHoraActual) => `${horas}:${minutos}` || prevHoraActual);
 
     // Utilizar los valores más recientes para almacenar en el almacenamiento local
     localStorage.setItem("porcentajeBateria", res.data[0].nivel);
@@ -92,7 +87,10 @@ function BatteryPage() {
     localStorage.setItem("horaEstado", res.data[1].hora);
     localStorage.setItem("fechaActual", `${dia}/${mes}/${anio}`);
     localStorage.setItem("horaActual", `${horas}:${minutos}`);
+  } catch {
+
   }
+} 
   return (
     <div>
       <h1
