@@ -38,59 +38,59 @@ function BatteryPage() {
 
   async function actualizarHandler(event) {
     event.preventDefault();
-try{
-    const response = await fetch("/api/bateria", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json", // Indica que estás enviando datos en formato JSON
-      },
-    });
+    try {
+      const response = await fetch("/api/bateria", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json", // Indica que estás enviando datos en formato JSON
+        },
+      });
 
-    if (!response.ok) {
-      throw new Error(res.message || "something went wrong!!!");
-    }
+      if (!response.ok) {
+        throw new Error(res.message || "something went wrong!!!");
+      }
 
-    const res = await response.json();
+      const res = await response.json();
 
-    console.log(res.data[0]);
+      console.log(res.data[0]);
 
-    console.log(res.data[1]);
+      console.log(res.data[1]);
 
-    setPorcentajeBateria(res.data[0].nivel);
-    setFechaBateria(res.data[0].fecha);
-    setHoraBateria(res.data[0].hora);
-    setEstado(res.data[1].estado);
-    setFechaEstado(res.data[1].fecha);
-    setHoraEstado(res.data[1].hora);
+      setPorcentajeBateria(res.data[0].nivel);
+      setFechaBateria(res.data[0].fecha);
+      setHoraBateria(res.data[0].hora);
+      setEstado(res.data[1].estado);
+      setFechaEstado(res.data[1].fecha);
+      setHoraEstado(res.data[1].hora);
 
-    let fechaNueva = new Date();
+      let fechaNueva = new Date();
 
-    const horas = await fechaNueva.getHours().toString().padStart(2, "0");
-    const minutos = await fechaNueva.getMinutes().toString().padStart(2, "0");
+      const horas = await fechaNueva.getHours().toString().padStart(2, "0");
+      const minutos = await fechaNueva.getMinutes().toString().padStart(2, "0");
 
-    const dia = await fechaNueva.getDate().toString().padStart(2, "0");
-    const mes = await (fechaNueva.getMonth() + 1).toString().padStart(2, "0"); // Nota: Los meses comienzan desde 0
-    const anio = await fechaNueva.getFullYear();
+      const dia = await fechaNueva.getDate().toString().padStart(2, "0");
+      const mes = await (fechaNueva.getMonth() + 1).toString().padStart(2, "0"); // Nota: Los meses comienzan desde 0
+      const anio = await fechaNueva.getFullYear();
 
-    // Utilizar la función de setState que acepta un callback para asegurarse de tener los valores más recientes
-    setFechaActual(
-      (prevFechaActual) => `${dia}/${mes}/${anio}` || prevFechaActual
-    );
-    setHoraActual((prevHoraActual) => `${horas}:${minutos}` || prevHoraActual);
+      // Utilizar la función de setState que acepta un callback para asegurarse de tener los valores más recientes
+      setFechaActual(
+        (prevFechaActual) => `${dia}/${mes}/${anio}` || prevFechaActual
+      );
+      setHoraActual(
+        (prevHoraActual) => `${horas}:${minutos}` || prevHoraActual
+      );
 
-    // Utilizar los valores más recientes para almacenar en el almacenamiento local
-    localStorage.setItem("porcentajeBateria", res.data[0].nivel);
-    localStorage.setItem("fechaBateria", res.data[0].fecha);
-    localStorage.setItem("horaBateria", res.data[0].hora);
-    localStorage.setItem("estado", res.data[1].estado);
-    localStorage.setItem("fechaEstado", res.data[1].fecha);
-    localStorage.setItem("horaEstado", res.data[1].hora);
-    localStorage.setItem("fechaActual", `${dia}/${mes}/${anio}`);
-    localStorage.setItem("horaActual", `${horas}:${minutos}`);
-  } catch {
-
+      // Utilizar los valores más recientes para almacenar en el almacenamiento local
+      localStorage.setItem("porcentajeBateria", res.data[0].nivel);
+      localStorage.setItem("fechaBateria", res.data[0].fecha);
+      localStorage.setItem("horaBateria", res.data[0].hora);
+      localStorage.setItem("estado", res.data[1].estado);
+      localStorage.setItem("fechaEstado", res.data[1].fecha);
+      localStorage.setItem("horaEstado", res.data[1].hora);
+      localStorage.setItem("fechaActual", `${dia}/${mes}/${anio}`);
+      localStorage.setItem("horaActual", `${horas}:${minutos}`);
+    } catch {}
   }
-} 
   return (
     <div>
       <h1

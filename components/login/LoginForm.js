@@ -23,7 +23,7 @@ function LoginForm() {
       alert("Usuario o contraseña invalido");
     }
     else {
-      router.push('/')
+      router.push('/control')
     }
   }
 
