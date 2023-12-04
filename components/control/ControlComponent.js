@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { Fragment } from "react";
@@ -31,12 +30,12 @@ function ControlComponent() {
           <li>
             <h3>Estado tira 365:</h3>
             <MqttButton
-              nombre="Apagar tira 385"
+              nombre="Apagar tira 365"
               topic="trampa1/tira365"
               mensaje="OFF"
             />
             <MqttButton
-              nombre="Prender tira 385"
+              nombre="Prender tira 365"
               topic="trampa1/tira365"
               mensaje="ON"
             />
