@@ -92,9 +92,9 @@ function BatteryPage() {
     } catch {}
   }
   return (
-    <div>
+    <div style={{ display: "flex", justifyContent: "center", fontSize: "2rem" }}>
       <h1
-        style={{ display: "flex", justifyContent: "center", fontSize: "2rem" }}
+        
       >
         Estado de la bateria y de la trampa
       </h1>
