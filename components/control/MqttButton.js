@@ -3,8 +3,8 @@ import mqtt from "mqtt";
 function MqttButton(props) {
   function handleClick() {
     //conectadrse al cliente
-    const client = mqtt.connect("ws://54.232.94.28:8883", {
-      ca: '@/Certificado/ca.crt'
+    const client = mqtt.connect("ws://54.232.94.28:9001", {
+      // ca: '@/Certificado/ca.crt'
     });
 
     client.on("error", (error) => {
