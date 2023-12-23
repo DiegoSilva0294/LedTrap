@@ -9,7 +9,7 @@ async function handler(req, res) {
     console.log(data);
 
     const connectionstring = `mongodb+srv://${process.env.mongodb_username}:${process.env.mongodb_password}@${process.env.mongodb_cluster}.repnmln.mongodb.net/${process.env.mongodb_database}?retryWrites=true&w=majority`;
-    //"mongodb+srv://diegosilvacarreras:YrPQ7F7p5QVuwaOM@cluster0.repnmln.mongodb.net/LED-trap?retryWrites=true&w=majority"
+    ///"mongodb+srv://diegosilvacarreras:YrPQ7F7p5QVuwaOM@cluster0.repnmln.mongodb.net/LED-trap?retryWrites=true&w=majority"
 
     try {
       client = await MongoClient.connect(connectionstring);
